@@ -1,0 +1,7 @@
+{
+  "name": "hStock",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
