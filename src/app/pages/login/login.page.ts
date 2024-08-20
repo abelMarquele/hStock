@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,22 +13,24 @@ import { NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   validationUserMessage = {
-    email:[
-      {type:"required", message:"Please enter your Email"},
-      {type:"pattern", message:"The Email entered is Incorrect.Try again"}
+    email: [
+      { type: "required", message: "Please enter your Email" },
+      { type: "pattern", message: "The Email entered is Incorrect. Try again" }
     ],
-    password:[
-      {type:"required", message:"please Enter your Password!"},
-      {type:"minlength", message:"The Password must be at least 5 characters or more"}
+    password: [
+      { type: "required", message: "Please Enter your Password!" },
+      { type: "minlength", message: "The Password must be at least 5 characters or more" }
     ]
   }
 
-  // validationFormUser: FormGroup;
-  validationFormUser!: FormGroup;  // Usa o operador de afirmação de não nulo aqui
+  validationFormUser!: FormGroup; // Usa o operador de afirmação de não nulo aqui
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private nav: NavController) { }
-
-  
+  constructor(
+    private formBuilder: FormBuilder, 
+    private authService: AuthService,
+    private router: Router, 
+    private nav: NavController
+  ) { }
 
   ngOnInit() {
     console.log('Initializing form...');
@@ -41,47 +45,16 @@ export class LoginPage implements OnInit {
         ])]
       });
     }
+    
+// teste@gmail.com / 123456
 
-
-  
-LoginUser(value: any){
-  console.log("Am logged in");
-  // try{
-  //    this.authservice.loginFireauth(value).then( resp =>{
-  //      console.log(resp);
-  //   //  this.router.navigate(['tabs'])
- 
-  //    if(resp.user){
-
-  //      this.authservice.setUser({
-  //        username : resp.user.displayName,
-  //        uid: resp.user.uid
-  //      })
-
-  //     const userProfile = this.firestore.collection('profile').doc(resp.user.uid);
-
-  //      userProfile.get().subscribe( result=>{
-
-  //       if(result.exists){
-  //         this.nav.navigateForward(['tabs']);
-  //       }else{
-
-  //         this.firestore.doc(`profile/${this.authservice.getUID()}`).set({
-  //           name: resp.user.displayName,
-  //           email: resp.user.email
-  //         });
-
-  //          this.nav.navigateForward(['uploadimage']);
-  //       }
-  //      })
-  //    }
-  
-       
-  //    })
-  // }catch(err){
-  //   console.log(err);
-  // }
-}
-
-
+  LoginUser(value: any) {
+    this.authService.loginFireauth(value).then(res => {
+      console.log("Login success:", res);
+      this.nav.navigateForward('/tabs'); // Modificar conforme necessário
+    }).catch(err => {
+      console.error("Login error:", err);
+      // Pode querer mostrar um alerta de erro ao usuário aqui
+    });
+  }
 }

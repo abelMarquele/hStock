@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NavController} from '@ionic/angular'
+import { NavController } from '@ionic/angular'
+
 
 @Component({
   selector: 'app-welcome',
@@ -14,11 +15,11 @@ export class WelcomePage implements OnInit {
   }
 
   gotoLoginpage(){
-    this.nav.navigateForward(['login']);
+    this.nav.navigateForward('/login');
   }
 
   registerUser(){ 
-    this.nav.navigateForward(['signup'])
+    this.nav.navigateForward('/signup');
   }
 
 }
