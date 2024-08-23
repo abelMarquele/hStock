@@ -10,7 +10,9 @@ import { RouteReuseStrategy } from '@angular/router';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import {firebaseConfig} from '../environments/environment';
+import { firebaseConfig } from '../environments/environment';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,9 @@ import {firebaseConfig} from '../environments/environment';
     // Configurações do Firebase com módulos compatíveis
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+
+    HttpClientModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

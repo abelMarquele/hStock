@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import {AlertController, NavController,LoadingController} from '@ionic/angular'
+import {AuthService} from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-singup',
@@ -28,6 +29,7 @@ export class SingupPage implements OnInit {
   constructor(private router: Router, 
     private navCtr: NavController, 
     private formbuilder: FormBuilder,
+    private authService: AuthService, 
     public loadingCtrl : LoadingController, 
     private alertCtrl: AlertController){
    this.loading = this.loadingCtrl
@@ -58,29 +60,23 @@ export class SingupPage implements OnInit {
 
   registerUser(value: any) {
     this.showalert();
-    //      try{
-    //     this.authService.userRegistration(value).then( response =>{
-    //       console.log(response);
-    //       if(response.user){
-    //         response.user.updateProfile({
-    //           displayName: value.names,
-    //           email: value.email,
-    //           phoneNumber: value.phone
-
-    //         });
-    //      this.preference.store(value.phone,'userPhoneNumber');
-    //       this.loading.dismiss();
-    //       this.router.navigate(['loginscreen']);
-    //       }
-    //     }, error=>{
-    //       this.loading.dismiss();
-    //       this.errorLoading(error.message);
-
-    //     })
-    //   }catch(erro){
-    //     console.log(erro)
-    //  }
+    try {
+      this.authService.userRegistration(value).then(response => {
+        console.log(response);
+        if (response.user) {
+          // this.preference.store(response.user.phoneNumber, 'userPhoneNumber');
+          this.loading.dismiss();
+          this.router.navigate(['loginscreen']);
+        }
+      }).catch(error => {
+        this.loading.dismiss();
+        this.errorLoading(error.message);
+      });
+    } catch (erro) {
+      console.log(erro);
+    }
   }
+  
 
 
   async errorLoading(message: any) {
@@ -97,9 +93,6 @@ export class SingupPage implements OnInit {
     await loading.present();
   }
 
-
-
-
   async showalert() {
     var load = await this.loadingCtrl.create({
       message: "please wait....",
@@ -107,7 +100,4 @@ export class SingupPage implements OnInit {
     })
     load.present();
   }
-
-
-
 }
