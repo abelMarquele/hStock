@@ -1,17 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Gerenciamento de Estoque
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+<app-stock-list (stockSelected)="onStockSelected($event)"></app-stock-list>
+<app-stock-detail></app-stock-detail>
+  <!-- Área para Listar Stocks -->
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-card-title>Listagem de Stocks</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <app-stock-list></app-stock-list>
+    </ion-card-content>
+  </ion-card> -->
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- Área para Detalhes do Stock -->
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-card-title>Detalhes do Stock</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <app-stock-detail></app-stock-detail>
+    </ion-card-content>
+  </ion-card> -->
+
+  <!-- Área para Editar Stock -->
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-card-title>Editar Stock</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <app-stock-edit></app-stock-edit>
+    </ion-card-content>
+  </ion-card> -->
+
+  <!-- Área para Criar Novo Stock -->
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-card-title>Criar Novo Stock</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <app-stock-create></app-stock-create>
+    </ion-card-content>
+  </ion-card> -->
 </ion-content>

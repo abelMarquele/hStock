@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {AuthGuard} from 'src/app/guards/auth.guard'
 
+import { StockDetailComponent } from './components/stock-detail/stock-detail.component'
+
 const routes: Routes = [
   {
     path: '',
@@ -28,7 +30,8 @@ const routes: Routes = [
   {
     path: 'welcome',
     loadChildren: () => import('./pages/welcome/welcome.module').then( m => m.WelcomePageModule)
-  }
+  },
+  { path: 'stock-detail/:id', component: StockDetailComponent },
 ];
 @NgModule({
   imports: [

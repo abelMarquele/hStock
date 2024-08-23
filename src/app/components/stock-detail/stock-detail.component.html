@@ -1,0 +1,22 @@
+<!-- stock-detail.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref={{prevUrl}}></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card *ngIf="stock">
+  <ion-card-header>
+    <ion-card-title>{{ stock.item }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p>Material: {{ stock.material }}</p>
+    <p>Stock Necessário: {{ stock.stock_necessario }}</p>
+    <p>Stock Existente: {{ stock.stock_existente }}</p>
+    <p>Stock a Solicitar: {{ stock.stock_solicitar }}</p>
+    <p>Categoria: {{ stock.categoria.nome }}</p>
+    <p>US: {{ stock.us.nome }}</p>
+  </ion-card-content>
+</ion-card>
