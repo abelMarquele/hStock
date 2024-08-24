@@ -1,9 +1,56 @@
 <!-- stock-create.component.html -->
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref={{prevUrl}}></ion-back-button>
+      </ion-buttons>
+      <!-- <ion-button class="custom-button"  (click)="editStock(stock.id)" fill="outline">
+        <ion-icon class="custom-icon" name="pencil" slot="icon-only"></ion-icon>
+      </ion-button> -->
+      <ion-title>Criar Produto</ion-title>
+      <ion-buttons slot="end">
+        <ion-button type="submit" expand="full" [disabled]="!stockForm.valid">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>  
+</ion-header>
+   
 <form [formGroup]="stockForm" (ngSubmit)="createStock()">
   <ion-item>
     <ion-label position="floating">Item</ion-label>
     <ion-input formControlName="item"></ion-input>
   </ion-item>
-  <!-- Repita para outros campos -->
-  <ion-button type="submit" expand="full">Create Stock</ion-button>
+
+  <ion-item>
+    <ion-label position="floating">Material</ion-label>
+    <ion-input formControlName="material"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Stock Necessário</ion-label>
+    <ion-input type="number" formControlName="stock_necessario"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Stock Existente</ion-label>
+    <ion-input type="number" formControlName="stock_existente"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Stock a Solicitar</ion-label>
+    <ion-input type="number" formControlName="stock_solicitar"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Categoria</ion-label>
+    <ion-input formControlName="categoria"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">US</ion-label>
+    <ion-input formControlName="us"></ion-input>
+  </ion-item>
+
+  <!-- <ion-button type="submit" expand="full" [disabled]="!stockForm.valid">Create Stock</ion-button> -->
 </form>

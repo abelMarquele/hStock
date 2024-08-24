@@ -44,5 +44,5 @@ export class StockListComponent implements OnInit {
   selectStock(id: number) {
     this.router.navigate(['stock-detail', id]);
   }
-  
+
 }

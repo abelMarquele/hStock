@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { PreviousService } from '../../services/previous.service';
@@ -16,6 +17,7 @@ export class StockDetailComponent implements OnInit {
 
   constructor(private apiService: ApiService, 
     private previousRouteService: PreviousService,
+    private router: Router,
     private route: ActivatedRoute) {
     this.route.params.pipe(
       switchMap(params => {
@@ -35,6 +37,10 @@ export class StockDetailComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  editStock(id: number) {
+    this.router.navigate(['stock-edit', id]);
   }
 
   prevUrl = this.previousRouteService.getPreviousUrl();

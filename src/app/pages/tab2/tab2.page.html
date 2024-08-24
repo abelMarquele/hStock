@@ -3,49 +3,16 @@
     <ion-title>
       Gerenciamento de Estoque
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openCreateStockModal()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 <app-stock-list (stockSelected)="onStockSelected($event)"></app-stock-list>
-<app-stock-detail></app-stock-detail>
-  <!-- Área para Listar Stocks -->
-  <!-- <ion-card>
-    <ion-card-header>
-      <ion-card-title>Listagem de Stocks</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <app-stock-list></app-stock-list>
-    </ion-card-content>
-  </ion-card> -->
-
-  <!-- Área para Detalhes do Stock -->
-  <!-- <ion-card>
-    <ion-card-header>
-      <ion-card-title>Detalhes do Stock</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <app-stock-detail></app-stock-detail>
-    </ion-card-content>
-  </ion-card> -->
-
-  <!-- Área para Editar Stock -->
-  <!-- <ion-card>
-    <ion-card-header>
-      <ion-card-title>Editar Stock</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <app-stock-edit></app-stock-edit>
-    </ion-card-content>
-  </ion-card> -->
-
-  <!-- Área para Criar Novo Stock -->
-  <!-- <ion-card>
-    <ion-card-header>
-      <ion-card-title>Criar Novo Stock</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <app-stock-create></app-stock-create>
-    </ion-card-content>
-  </ion-card> -->
+<!-- <app-stock-detail></app-stock-detail> -->
+<!-- No componente pai -->
 </ion-content>
