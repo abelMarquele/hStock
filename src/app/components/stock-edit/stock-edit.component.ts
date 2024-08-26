@@ -12,6 +12,8 @@ import { PreviousService } from '../../services/previous.service';
 export class StockEditComponent implements OnInit, OnChanges {
   @Input() stockId: number | null = null;
   stockForm!: FormGroup;
+  categorias: any[] = [];
+  uss: any[] = [];
 
   constructor(private apiService: ApiService, 
     private fb: FormBuilder,
@@ -28,6 +30,13 @@ export class StockEditComponent implements OnInit, OnChanges {
         } else {
           console.error('Stock ID is missing in route parameters');
         }
+      });
+      this.apiService.getCategorias().subscribe(data => {
+        this.categorias = data;
+      });
+  
+      this.apiService.getUS().subscribe(data => {
+        this.uss = data;
       });
     }
 
@@ -46,8 +55,8 @@ export class StockEditComponent implements OnInit, OnChanges {
       stock_necessario: ['', Validators.required],
       stock_existente: ['', Validators.required],
       stock_solicitar: ['', Validators.required],
-      categoria_id: ['', Validators.required],
-      us_id: ['', Validators.required]
+      categoria: ['', Validators.required],
+      us: ['', Validators.required]
     });
   }
 
@@ -62,8 +71,8 @@ export class StockEditComponent implements OnInit, OnChanges {
           stock_necessario: stock.stock_necessario,
           stock_existente: stock.stock_existente,
           stock_solicitar: stock.stock_solicitar,
-          categoria_id: stock.categoria_id,
-          us_id: stock.us_id
+          categoria: stock.categoria_detail.id,
+          us: stock.us_detail.id
         });
       }, error => {
         console.error('Erro ao carregar os dados:', error);

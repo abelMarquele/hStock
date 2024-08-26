@@ -1,59 +1,67 @@
 <!-- stock-edit.component.html -->
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref={{prevUrl}}></ion-back-button>
-      </ion-buttons>
-      <ion-title>Editar Produto</ion-title>
-  
-      <ion-buttons slot="end">
-        <ion-button type="submit" expand="full" [disabled]="!stockForm.valid">
-          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-   
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref={{prevUrl}}></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Produto</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="updateStock()" type="submit" expand="full" [disabled]="!stockForm.valid">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<form [formGroup]="stockForm" (ngSubmit)="updateStock()">
-  <ion-list>
+<ion-content class="bg-color">
+  <ion-card>
+    <form [formGroup]="stockForm" (ngSubmit)="updateStock()">
+      <ion-list>
 
-    <ion-item>
-      <ion-label position="floating">Item</ion-label>
-      <ion-input formControlName="item"></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input name="item" type="text" placeholder="Item" formControlName="item"></ion-input>
+          <ion-icon name="code-working-outline"></ion-icon>
+        </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Material</ion-label>
-      <ion-input formControlName="material"></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input name="material" type="text" placeholder="Material" formControlName="material"></ion-input>
+          <ion-icon name="filter-circle-outline"></ion-icon>
+        </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Stock Necessário</ion-label>
-      <ion-input type="number" formControlName="stock_necessario"></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input name="stock_necessario" type="number" placeholder="Stock Necessário" formControlName="stock_necessario"></ion-input>
+          <ion-icon name="logo-xbox"></ion-icon>
+        </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Stock Existente</ion-label>
-      <ion-input type="number" formControlName="stock_existente"></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input name="stock_existente" type="number" placeholder="Stock Existente" formControlName="stock_existente"></ion-input>
+          <ion-icon name="logo-dropbox"></ion-icon>
+        </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Stock a Solicitar</ion-label>
-      <ion-input type="number" formControlName="stock_solicitar"></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input name="stock_solicitar" type="number" placeholder="Stock a Solicitar" formControlName="stock_solicitar"></ion-input>
+          <ion-icon name="cart-outline"></ion-icon>
+        </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Categoria</ion-label>
-      <ion-input formControlName="categoria_id"></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-select formControlName="categoria" placeholder="Selecione a categoria">
+            <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{ categoria.nome }}
+            </ion-select-option>
+          </ion-select>
+          <ion-icon name="list-outline"></ion-icon>
+        </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">US</ion-label>
-      <ion-input formControlName="us_id"></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-select formControlName="us" placeholder="Selecione a US">
+            <ion-select-option *ngFor="let us of uss" [value]="us.id">
+              {{ us.nome }}
+            </ion-select-option>
+          </ion-select>
+          <ion-icon name="list-outline"></ion-icon>
+        </ion-item>
 
-  </ion-list>
-
-  <!-- <ion-button type="submit" expand="full" [disabled]="!stockForm.valid">Update Stock</ion-button> -->
-</form>
+      </ion-list>
+    </form>
+  </ion-card>
+</ion-content>

@@ -11,6 +11,8 @@ import { PreviousService } from '../../services/previous.service';
 export class StockCreateComponent {
   @Output() stockCreated = new EventEmitter<boolean>();
   stockForm: FormGroup;
+  categorias: any[] = [];
+  uss: any[] = [];
 
   constructor(private apiService: ApiService, 
     private previousRouteService: PreviousService,
@@ -21,13 +23,24 @@ export class StockCreateComponent {
       stock_necessario: ['', Validators.required],
       stock_existente: ['', Validators.required],
       stock_solicitar: ['', Validators.required],
-      categoria: ['', Validators.required],  // Ajuste conforme sua implementação
-      us: ['', Validators.required]  // Ajuste conforme sua implementação
+      categoria: ['', Validators.required],  
+      us: ['', Validators.required]
+    });
+  }
+
+  ngOnInit() {
+    this.apiService.getCategorias().subscribe(data => {
+      this.categorias = data;
+    });
+
+    this.apiService.getUS().subscribe(data => {
+      this.uss = data;
     });
   }
 
   createStock() {
     if (this.stockForm.valid) {
+      console.log('Enviando dados:', this.stockForm.value);
       this.apiService.createStock(this.stockForm.value).subscribe(() => {
         this.stockCreated.emit(true);
         console.log('Stock created successfully');

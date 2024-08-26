@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./stock-list.component.scss']
 })
 export class StockListComponent implements OnInit {
-  // @Output() stockSelected = new EventEmitter<number>();
   @Output() stockSelected = new EventEmitter<any>();
   stocks: any[] = [];
   filteredStocks: any[] = [];

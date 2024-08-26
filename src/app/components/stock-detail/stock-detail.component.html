@@ -4,19 +4,12 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref={{prevUrl}}></ion-back-button>
     </ion-buttons>
-    <!-- <ion-button class="custom-button"  (click)="editStock(stock.id)" fill="outline">
-      <ion-icon class="custom-icon" name="pencil" slot="icon-only"></ion-icon>
-    </ion-button> 
-    <ion-icon name="create-outline"></ion-icon>
-    -->
     <ion-title>Detalhe do Produto</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="editStock(stock.id)">
         <ion-icon slot="icon-only" name="create-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    
-    
 </ion-toolbar>
 </ion-header>
 
@@ -30,8 +23,8 @@
     <p>Stock Necessário: {{ stock.stock_necessario }}</p>
     <p>Stock Existente: {{ stock.stock_existente }}</p>
     <p>Stock a Solicitar: {{ stock.stock_solicitar }}</p>
-    <p>Categoria: {{ stock.categoria }}</p>
-    <p>US: {{ stock.us }}</p>
+    <p>Categoria: {{ stock.categoria_detail.nome }}</p>
+    <p>US: {{ stock.us_detail.nome }}</p>
   </ion-card-content>
 </ion-card>
 </ion-content>
