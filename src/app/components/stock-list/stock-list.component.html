@@ -1,17 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="filterStocks()"></ion-searchbar>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+        <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="filterStocks()"></ion-searchbar>
+    </ion-card-header>
 
-<ion-content>
-  <ion-list>
-    <ion-card *ngFor="let stock of filteredStocks" (click)="selectStock(stock.id)">
-      <ion-label>
-        <h2>{{ stock.item }}</h2>
-        <p>Material: {{ stock.material }}</p>
-      </ion-label>
-    </ion-card>
-  </ion-list>
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-card *ngFor="let stock of filteredStocks" (click)="selectStock(stock.id)">
+          <ion-label>
+            <h2>{{ stock.item }}</h2>
+            <p>Material: {{ stock.material }}</p>
+          </ion-label>
+        </ion-card>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
-

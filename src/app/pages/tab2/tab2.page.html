@@ -5,7 +5,7 @@
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="openCreateStockModal()">
-        <ion-icon slot="icon-only" name="add"></ion-icon>
+        <ion-icon slot="icon-only" name="add" style="color: black;"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -13,6 +13,4 @@
 
 <ion-content>
 <app-stock-list (stockSelected)="onStockSelected($event)"></app-stock-list>
-<!-- <app-stock-detail></app-stock-detail> -->
-<!-- No componente pai -->
 </ion-content>

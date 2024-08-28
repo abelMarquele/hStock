@@ -1,17 +1,54 @@
+<!--////////////////////////////////////////////////////////////////////////////////////////////////
+
+ src/app/home/home.page.html 
 <ion-header>
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-title>Stock Overview</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Critical Stock Items</ion-card-title>
+      <ion-card-subtitle>Total Critical Items: {{ totalCritical }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let stock of criticalStocks">
+          <ion-label>
+            <h2>{{ stock.item }} - {{ stock.material }}</h2>
+            <p>Needed: {{ stock.stock_necessario }}, In Stock: {{ stock.stock_existente }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content> -->
 
-  <div class="wrappContent">
 
-      <div>
-        <h1>Hello World</h1>
-          <p>Home Page</p>
-      </div>
+<!-- src/app/home/home.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Visão Geral</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  </div>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Artigos críticos em stock</ion-card-title>
+      <ion-card-subtitle>Total de artigos críticos: {{ totalCritical }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item *ngFor="let stock of criticalStocks" detail>
+          <ion-label>
+            <h2>{{ stock.item }} - {{ stock.material }}</h2>
+            <p>Necessário: {{ stock.stock_necessario }} | Em stock: {{ stock.stock_existente }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

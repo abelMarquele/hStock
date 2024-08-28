@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -25,6 +26,12 @@ export class ApiService {
    // Obter um stock específico
    getStock(id: number): Observable<any> {
     return this.http.get(`${environment.apiUrl}/stock-app/stocks/${id}/`);
+  }
+
+  getCriticalStocks(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}/stock-app/stocks/`).pipe(
+      map(stocks => stocks.filter(stock => stock.stock_existente < stock.stock_necessario))
+    );
   }
 
   // Criar um novo stock

@@ -1,8 +1,14 @@
-// ion-content{
-//     --ion-background-color:#b5d4d7;
-//   } 
+  
+ion-card {
+  box-shadow: 0 4px 8px rgba(253, 247, 247, 0.1);
+  border-radius: 15px;
+}
+
+ion-toolbar {
+  --background: linear-gradient(to right, #b5d4d7, #ffffff);
+}
+//////////////////////////////////////////////////////////////////
 
 ion-content {
     --overflow: hidden; /* Propriedade do Ionic para desativar o scroll */
   }
-  

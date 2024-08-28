@@ -1,14 +1,43 @@
 
-ion-content{
-    --ion-background-color:#b5d4d7;
-  }
   
-  .wrappContent{
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
-  
+ion-card {
+  box-shadow: 0 4px 8px rgba(253, 247, 247, 0.1);
+  border-radius: 15px;
+}
+
+ion-toolbar {
+  --background: linear-gradient(to right, #b5d4d7, #ffffff);
+}
+//////////////////////////////////////////////////////////////////
+/* src/app/home/home.page.scss */
+ion-card-header {
+  background-color: #f0f0f0; /* Sutil diferenciação do cabeçalho */
+  border-bottom: 1px solid #ccc; /* Adiciona uma linha de separação */
+}
+
+ion-card-title {
+  padding-top: 8px; /* Espaço extra no topo do título */
+}
+
+ion-card-subtitle {
+  padding-bottom: 8px; /* Espaço extra abaixo do subtítulo */
+}
+
+ion-list {
+  margin-top: 16px; /* Espaço extra acima da lista */
+}
+
+ion-item {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --inner-padding-end: 16px; /* Ajusta o padding interno dos itens da lista */
+}
+
+h2 {
+  font-size: 1.1rem; /* Aumenta ligeiramente o tamanho da fonte para os títulos dos itens */
+}
+
+p {
+  color: #666; /* Cor mais suave para os parágrafos */
+  font-size: 0.9rem; /* Tamanho menor para detalhes */
+}
